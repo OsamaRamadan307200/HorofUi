@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Horof - Listen and Write</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- All the same head content as previous pages -->
+    <style>
+        .question-card {
+            border-left: 4px solid var(--bs-primary);
+        }
+        .audio-player {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--bs-primary);
+            color: white;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+        .play-btn.playing {
+            background-color: var(--bs-danger);
+        }
+        .answer-box {
+            border: 2px solid var(--bs-primary);
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 100px;
+            font-size: 1.2rem;
+            direction: rtl; /* For Arabic text */
+        }
+        .answer-box:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+        .playback-speed {
+            width: 80px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .feedback-correct {
+            border-left: 4px solid var(--bs-success);
+        }
+        .feedback-incorrect {
+            border-left: 4px solid var(--bs-danger);
+        }
+        .character-count {
+            font-size: 0.9rem;
+            color: var(--bs-secondary);
+            text-align: right;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner and Navbar (same as previous pages) -->
+
+    <!-- Question Header -->
+    <div class="container-fluid py-5 mb-5 page-header bg-light wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="levels.html">Levels</a></li>
+                            <li class="breadcrumb-item"><a href="lesson.html">Lesson 5</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Question 4</li>
+                        </ol>
+                    </nav>
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                        <h1 class="display-5 text-dark mb-0 animated slideInDown">Listening Comprehension</h1>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary rounded-pill me-3">Question 4 of 5</span>
+                            <div class="progress" style="width: 100px; height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Content -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow fadeIn" data-wow-delay="0.3s">
+                    <!-- Question Card -->
+                    <div class="question-card card border-primary mb-4">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Listen and Write</h5>
+                            <span class="badge bg-white text-primary">5 points</span>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="mb-4">Listen to the audio and write what you hear in Arabic:</h4>
+                            
+                            <!-- Audio Player -->
+                            <div class="audio-player text-center">
+                                <i class="fas fa-headphones fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-3">Greeting Phrase</h5>
+                                <div class="audio-controls">
+                                    <button class="btn btn-outline-secondary" onclick="skipBack()">
+                                        <i class="fas fa-backward"></i>
+                                    </button>
+                                    <button id="playBtn" class="play-btn" onclick="togglePlay()">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary" onclick="skipForward()">
+                                        <i class="fas fa-forward"></i>
+                                    </button>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center mt-3">
+                                    <small class="me-2">Playback Speed:</small>
+                                    <select class="playback-speed" onchange="changeSpeed(this.value)">
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1" selected>1x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                    </select>
+                                </div>
+                                <audio id="audioPlayer" src="audio/arabic-greeting.mp3"></audio>
+                            </div>
+                            
+                            <!-- Answer Box -->
+                            <div class="mb-4">
+                                <label for="userAnswer" class="form-label">Type what you hear:</label>
+                                <div class="position-relative">
+                                    <textarea id="userAnswer" class="answer-box form-control" rows="3" 
+                                              placeholder="اكتب ما تسمع هنا..." 
+                                              oninput="updateCharacterCount()"></textarea>
+                                    <div class="character-count">
+                                        <span id="charCount">0</span> حرف
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Feedback -->
+                            <div id="feedback" class="d-none">
+                                <div class="alert feedback-correct alert-success d-flex align-items-center">
+                                    <i class="fas fa-check-circle fa-2x me-3"></i>
+                                    <div>
+                                        <h5 class="alert-heading">Perfect!</h5>
+                                        <p class="mb-0">You correctly heard: "السلام عليكم ورحمة الله وبركاته"</p>
+                                    </div>
+                                </div>
+                                <div class="alert feedback-incorrect alert-danger d-flex align-items-center">
+                                    <i class="fas fa-times-circle fa-2x me-3"></i>
+                                    <div>
+                                        <h5 class="alert-heading">Almost There!</h5>
+                                        <p class="mb-0">The correct phrase was: "السلام عليكم ورحمة الله وبركاته"</p>
+                                        <p class="mb-0 mt-2">Your answer: <span id="userAnswerDisplay"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Buttons -->
+                            <div class="d-flex justify-content-between pt-3">
+                                <button class="btn btn-outline-primary" onclick="previousQuestion()">
+                                    <i class="fas fa-arrow-left me-2"></i> Previous
+                                </button>
+                                <button id="submitBtn" class="btn btn-primary" onclick="checkAnswer()">
+                                    Submit Answer
+                                </button>
+                                <button id="nextBtn" class="btn btn-primary d-none" onclick="nextQuestion()">
+                                    Next Question <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Tracking -->
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Your Progress</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Questions Completed:</span>
+                                <span>3/5</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Current Score:</span>
+                                <span>12 points</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Help Section -->
+                    <div class="card border-primary mt-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Listening Tips</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>Listen carefully to the pronunciation of each word</li>
+                                <li>Focus on the beginning and ending sounds of words</li>
+                                <li>You can play the audio multiple times if needed</li>
+                                <li>Try writing what you hear first, then check spelling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as previous pages) -->
+
+    <script>
+        // Audio player functionality
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        let isPlaying = false;
+        
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.classList.remove('playing');
+            } else {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+        
+        function skipBack() {
+            audio.currentTime = Math.max(0, audio.currentTime - 5);
+        }
+        
+        function skipForward() {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
+        }
+        
+        function changeSpeed(speed) {
+            audio.playbackRate = speed;
+        }
+        
+        // Update character count
+        function updateCharacterCount() {
+            const answer = document.getElementById('userAnswer').value;
+            document.getElementById('charCount').textContent = answer.length;
+        }
+        
+        // Check answer
+        function checkAnswer() {
+            const userAnswer = document.getElementById('userAnswer').value.trim();
+            const feedback = document.getElementById('feedback');
+            const correctAnswer = "السلام عليكم ورحمة الله وبركاته";
+            
+            // Show feedback
+            feedback.classList.remove('d-none');
+            
+            if (userAnswer === correctAnswer) {
+                // Correct answer
+                feedback.querySelector('.feedback-correct').classList.remove('d-none');
+                feedback.querySelector('.feedback-incorrect').classList.add('d-none');
+            } else {
+                // Incorrect answer
+                feedback.querySelector('.feedback-correct').classList.add('d-none');
+                feedback.querySelector('.feedback-incorrect').classList.remove('d-none');
+                document.getElementById('userAnswerDisplay').textContent = userAnswer || "[No answer provided]";
+            }
+            
+            // Disable input and submit button
+            document.getElementById('userAnswer').readOnly = true;
+            document.getElementById('submitBtn').classList.add('d-none');
+            document.getElementById('nextBtn').classList.remove('d-none');
+            
+            // Pause audio if playing
+            if (isPlaying) {
+                togglePlay();
+            }
+        }
+        
+        // Navigation functions
+        function previousQuestion() {
+            alert('Loading previous question...');
+        }
+        
+        function nextQuestion() {
+            window.location.href = "record.html";
+        }
+        
+        // Audio ended event
+        audio.addEventListener('ended', function() {
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            playBtn.classList.remove('playing');
+            isPlaying = false;
+        });
+        
+        // Auto-focus the answer box when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userAnswer').focus();
+        });
+    </script>
+</body>
+</html>

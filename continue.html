@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Horof - Fill in the Blank</title>
+    <!-- All the same head content as previous pages -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        .question-card {
+            border-left: 4px solid var(--bs-primary);
+            transition: all 0.3s;
+        }
+        .blank-space {
+            border-bottom: 2px dashed var(--bs-primary);
+            display: inline-block;
+            min-width: 150px;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        .blank-input {
+            border: none;
+            border-bottom: 2px solid var(--bs-primary);
+            background: transparent;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1rem;
+            padding: 5px 0;
+        }
+        .blank-input:focus {
+            outline: none;
+            border-bottom-color: var(--bs-primary);
+            box-shadow: 0 2px 0 0 var(--bs-primary);
+        }
+        .answer-feedback {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .answer-feedback.show {
+            opacity: 1;
+            max-height: 200px;
+        }
+        .feedback-correct {
+            border-left: 4px solid var(--bs-success);
+        }
+        .feedback-incorrect {
+            border-left: 4px solid var(--bs-danger);
+        }
+        .character-hint {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--bs-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner and Navbar (same as previous pages) -->
+
+    <!-- Question Header -->
+    <div class="container-fluid py-5 mb-5 page-header bg-light wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="levels.html">Levels</a></li>
+                            <li class="breadcrumb-item"><a href="lesson.html">Lesson 4</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Question 3</li>
+                        </ol>
+                    </nav>
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                        <h1 class="display-5 text-dark mb-0 animated slideInDown">Practice Questions</h1>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary rounded-pill me-3">Question 3 of 5</span>
+                            <div class="progress" style="width: 100px; height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Content -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow fadeIn" data-wow-delay="0.3s">
+                    <!-- Question Card -->
+                    <div class="question-card card border-primary mb-4">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Fill in the Blank</h5>
+                            <span class="badge bg-white text-primary">4 points</span>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="mb-4">Complete the following Arabic greeting:</h4>
+                            
+                            <!-- Question Text with Blank -->
+                            <div class="text-center mb-5" style="font-size: 1.5rem;">
+                                <span>الســـلام </span>
+                                <span class="blank-space">
+                                    <input type="text" class="blank-input" id="userAnswer" placeholder="Type your answer">
+                                    <div class="character-hint">(3 letters)</div>
+                                </span>
+                                <span>و رحمه الله و بركاته</span>
+                            </div>
+                            
+                            <!-- Answer Feedback -->
+                            <div id="feedback" class="answer-feedback">
+                                <div class="alert feedback-correct alert-success d-flex align-items-center">
+                                    <i class="fas fa-check-circle fa-2x me-3"></i>
+                                    <div>
+                                        <h5 class="alert-heading">Correct Answer!</h5>
+                                        <p class="mb-0">The complete greeting is "السلام عليكم" (Peace be upon you).</p>
+                                    </div>
+                                </div>
+                                <div class="alert feedback-incorrect alert-danger d-flex align-items-center">
+                                    <i class="fas fa-times-circle fa-2x me-3"></i>
+                                    <div>
+                                        <h5 class="alert-heading">Incorrect Answer</h5>
+                                        <p class="mb-0">The correct answer is "عليكم". The complete greeting is "السلام عليكم" (Peace be upon you).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Buttons -->
+                            <div class="d-flex justify-content-between pt-3">
+                                <button class="btn btn-outline-primary" onclick="previousQuestion()">
+                                    <i class="fas fa-arrow-left me-2"></i> Previous
+                                </button>
+                                <button id="submitBtn" class="btn btn-primary" onclick="checkAnswer()">
+                                    Check Answer
+                                </button>
+                                <button id="nextBtn" class="btn btn-primary d-none" onclick="nextQuestion()">
+                                    Next Question <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lesson Progress -->
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Your Progress</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Questions Completed:</span>
+                                <span>2/5</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%;"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Current Score:</span>
+                                <span>6 points</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hint Section -->
+                    <div class="card border-primary mt-4">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Need Help?</h5>
+                            <button class="btn btn-sm btn-light" onclick="toggleHint()">
+                                <i class="fas fa-lightbulb me-1"></i> Show Hint
+                            </button>
+                        </div>
+                        <div id="hintContent" class="card-body d-none">
+                            <p>This is a common Arabic greeting used when meeting someone. It literally means "Peace be upon you".</p>
+                            <p class="mb-0">The missing word starts with the letter "ع" (ayn).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as previous pages) -->
+
+    <script>
+        const correctAnswer = "عليكم"; // The correct answer for this question
+        
+        function checkAnswer() {
+            const userAnswer = document.getElementById('userAnswer').value.trim();
+            const feedback = document.getElementById('feedback');
+            
+            // Show feedback
+            feedback.classList.add('show');
+            
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                // Correct answer
+                feedback.querySelector('.feedback-correct').classList.remove('d-none');
+                feedback.querySelector('.feedback-incorrect').classList.add('d-none');
+            } else {
+                // Incorrect answer
+                feedback.querySelector('.feedback-correct').classList.add('d-none');
+                feedback.querySelector('.feedback-incorrect').classList.remove('d-none');
+            }
+            
+            // Disable input and submit button
+            document.getElementById('userAnswer').readOnly = true;
+            document.getElementById('submitBtn').classList.add('d-none');
+            document.getElementById('nextBtn').classList.remove('d-none');
+        }
+        
+        function toggleHint() {
+            const hintContent = document.getElementById('hintContent');
+            hintContent.classList.toggle('d-none');
+        }
+        
+        function previousQuestion() {
+            // In a real implementation, this would load the previous question
+            alert('Loading previous question...');
+        }
+        
+        function nextQuestion() {
+            // In a real implementation, this would load the next question
+            window.location.href = "voice.html";
+        }
+        
+        // Auto-focus the input field when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userAnswer').focus();
+        });
+    </script>
+</body>
+</html>

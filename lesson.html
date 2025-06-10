@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Horof - Arabic Lessons</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .lesson-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .lesson-tab {
+            transition: all 0.3s;
+        }
+        .lesson-tab:hover {
+            transform: translateX(5px);
+        }
+        .exercise-card {
+            border-left: 4px solid var(--bs-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <!-- (Same navbar as previous pages) -->
+    <!-- Navbar End -->
+
+    <!-- Lesson Header Start -->
+    <div class="container-fluid py-5 mb-5 page-header bg-light wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="levels.html">Levels</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Level 1: Lesson 3</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-5 text-dark mt-3 animated slideInDown">Introducing Yourself</h1>
+                    <p class="text-dark mb-4">Learn how to introduce yourself in Arabic with proper greetings and common phrases.</p>
+                    <div class="d-flex align-items-center">
+                        <span class="bg-primary text-white px-3 py-1 rounded me-3">Beginner</span>
+                        <small class="text-muted me-3"><i class="fas fa-clock me-2"></i> 25 min</small>
+                        <small class="text-muted"><i class="fas fa-check-circle me-2 text-success"></i> 120 students completed</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lesson Header End -->
+
+    <!-- Lesson Content Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Lesson Sidebar -->
+                <div class="col-lg-4 col-md-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="lesson-sidebar">
+                        <div class="card border-primary mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Level 1: Arabic Basics</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="list-group list-group-flush">
+                                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-check-circle text-success me-2"></i> Lesson 1: Alphabet</span>
+                                        <span class="badge bg-primary rounded-pill">15 min</span>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-check-circle text-success me-2"></i> Lesson 2: Greetings</span>
+                                        <span class="badge bg-primary rounded-pill">20 min</span>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center bg-primary text-white">
+                                        <span><i class="fas fa-play-circle me-2"></i> Lesson 3: Introducing Yourself</span>
+                                        <span class="badge bg-white text-primary rounded-pill">25 min</span>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-lock text-muted me-2"></i> Lesson 4: Numbers 1-20</span>
+                                        <span class="badge bg-light text-muted rounded-pill">30 min</span>
+                                    </a>
+                                    <!-- More lessons... -->
+                                </div>
+                            </div>
+                            <div class="card-footer bg-light">
+                                <div class="progress mb-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                                </div>
+                                <small class="text-muted">2 of 5 lessons completed</small>
+                            </div>
+                        </div>
+
+                        <div class="card border-primary mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Lesson Resources</h5>
+                            </div>
+                            <div class="card-body">
+                                <a href="#" class="d-flex align-items-center mb-3 lesson-tab">
+                                    <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Lesson Notes</h6>
+                                        <small class="text-muted">PDF, 1.2MB</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="d-flex align-items-center mb-3 lesson-tab">
+                                    <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                        <i class="fas fa-headphones"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Audio Practice</h6>
+                                        <small class="text-muted">MP3, 15 min</small>
+                                    </div>
+                                </a>
+                                <a href="#" class="d-flex align-items-center lesson-tab">
+                                    <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                        <i class="fas fa-images"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Vocabulary Flashcards</h6>
+                                        <small class="text-muted">10 cards</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" class="btn btn-outline-primary w-100 mb-3">
+                                <i class="fas fa-question-circle me-2"></i> Ask Instructor
+                            </a>
+                            <a href="#" class="btn btn-primary w-100">
+                                <i class="fas fa-arrow-right me-2"></i> Next Lesson
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Lesson Content -->
+                <div class="col-lg-8 col-md-7 wow fadeIn" data-wow-delay="0.3s">
+                    <!-- Video Player -->
+                    <div class="video-container mb-5 border border-primary rounded overflow-hidden">
+                        <!-- Replace with your actual video embed code -->
+                        <iframe src="https://www.youtube.com/embed/example" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Lesson Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="lessonTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="vocabulary-tab" data-bs-toggle="tab" data-bs-target="#vocabulary" type="button" role="tab">Vocabulary</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="exercises-tab" data-bs-toggle="tab" data-bs-target="#exercises" type="button" role="tab">Exercises</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab">My Notes</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="lessonTabContent">
+                        <!-- Overview Tab -->
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                            <h4 class="mb-4">Lesson Objectives</h4>
+                            <ul class="list-group list-group-flush mb-4">
+                                <li class="list-group-item bg-light"><i class="fas fa-check-circle text-primary me-2"></i> Learn basic self-introduction phrases</li>
+                                <li class="list-group-item bg-light"><i class="fas fa-check-circle text-primary me-2"></i> Practice asking and answering "What's your name?"</li>
+                                <li class="list-group-item bg-light"><i class="fas fa-check-circle text-primary me-2"></i> Understand cultural aspects of introductions</li>
+                            </ul>
+
+                            <h4 class="mb-4">Lesson Content</h4>
+                            <div class="accordion mb-4" id="lessonAccordion">
+                                <div class="accordion-item border-primary mb-3">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#section1">
+                                            <i class="fas fa-play text-primary me-3"></i> Part 1: Basic Introduction Phrases
+                                        </button>
+                                    </h2>
+                                    <div id="section1" class="accordion-collapse collapse show">
+                                        <div class="accordion-body">
+                                            <p>Learn these essential phrases:</p>
+                                            <table class="table table-bordered">
+                                                <thead class="bg-primary text-white">
+                                                    <tr>
+                                                        <th>Arabic</th>
+                                                        <th>Pronunciation</th>
+                                                        <th>English</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>أنا اسمي...</td>
+                                                        <td>Ana ismi...</td>
+                                                        <td>My name is...</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ما اسمك؟</td>
+                                                        <td>Ma ismuka? (male)<br>Ma ismuki? (female)</td>
+                                                        <td>What's your name?</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>تشرفنا</td>
+                                                        <td>Tasharrafna</td>
+                                                        <td>Nice to meet you</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="alert alert-primary">
+                                                <i class="fas fa-info-circle me-2"></i> Remember to use the masculine/feminine forms appropriately
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- More sections would follow the same pattern -->
+                            </div>
+                        </div>
+
+                        <!-- Vocabulary Tab -->
+                        <div class="tab-pane fade" id="vocabulary" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-header bg-primary text-white">
+                                            <h5 class="mb-0">New Words</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                                <span class="fw-bold">اسم</span>
+                                                <span>Name</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                                <span class="fw-bold">سعيد</span>
+                                                <span>Happy</span>
+                                            </div>
+                                            <!-- More vocabulary words -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-header bg-primary text-white">
+                                            <h5 class="mb-0">Practice Pronunciation</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <button class="btn btn-primary btn-lg rounded-circle p-4 mb-2">
+                                                    <i class="fas fa-microphone fa-2x"></i>
+                                                </button>
+                                                <p>Click and speak to practice</p>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%">75% Accuracy</div>
+                                            </div>
+                                            <button class="btn btn-outline-primary w-100">
+                                                <i class="fas fa-redo me-2"></i> Try Again
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exercises Tab -->
+                        <div class="tab-pane fade" id="exercises" role="tabpanel">
+                            <div class="exercise-card bg-light p-4 mb-4 rounded">
+                                <h5 class="d-flex align-items-center mb-4">
+                                    <span class="badge bg-primary me-3">1</span>
+                                    Matching Exercise
+                                </h5>
+                                <p>Match the Arabic phrases with their English meanings:</p>
+                                
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <div class="card p-3 border-primary">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="q1" id="q1a">
+                                                <label class="form-check-label" for="q1a">
+                                                    ما اسمك؟
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 border-primary">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="q1" id="q1b">
+                                                <label class="form-check-label" for="q1b">
+                                                    My name is...
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- More questions -->
+                                </div>
+                                
+                                <button class="btn btn-primary">Check Answers</button>
+                            </div>
+
+                            <div class="exercise-card bg-light p-4 rounded">
+                                <h5 class="d-flex align-items-center mb-4">
+                                    <span class="badge bg-primary me-3">2</span>
+                                    Fill in the Blank
+                                </h5>
+                                <p>Complete the dialogue with the correct Arabic phrases:</p>
+                                
+                                <div class="card p-4 mb-3 border-primary">
+                                    <p>Person A: <input type="text" class="form-control d-inline-block w-auto" placeholder="(What's your name?)"></p>
+                                    <p>Person B: <input type="text" class="form-control d-inline-block w-auto" placeholder="(My name is...)"></p>
+                                </div>
+                                
+                                <button class="btn btn-primary me-2">Submit</button>
+                                <button class="btn btn-outline-primary">Show Hint</button>
+                            </div>
+                        </div>
+
+                        <!-- Notes Tab -->
+                        <div class="tab-pane fade" id="notes" role="tabpanel">
+                            <div class="card border-primary mb-4">
+                                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">My Lesson Notes</h5>
+                                    <button class="btn btn-sm btn-light">
+                                        <i class="fas fa-save me-1"></i> Save
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <textarea class="form-control" rows="10" placeholder="Write your notes here..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Saved Notes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex border-bottom pb-3 mb-3">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-sticky-note text-primary fa-2x me-3"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cultural Note</h6>
+                                            <small class="text-muted">Added 2 days ago</small>
+                                            <p class="mb-0">In Arab culture, it's common to exchange pleasantries before getting to the main conversation.</p>
+                                        </div>
+                                    </div>
+                                    <!-- More saved notes -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lesson Content End -->
+
+    <!-- Footer Start -->
+    <!-- (Same footer as previous pages) -->
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
